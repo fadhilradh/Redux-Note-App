@@ -29,6 +29,21 @@ const reducer = (prevState = initialState, action) => {
         ...prevState,
         notes: [...prevState.notes, payload],
       };
+    case "TOGGLE_NOTE":
+      const newNotes = prevState.notes.slice();
+      const toggledNoteIndex = newNotes.findIndex(
+        (note) => note.id === payload
+      );
+      const toggledNote = newNotes[toggledNoteIndex];
+      const newNote = {
+        ...toggledNote,
+        isImportant: !toggledNote.isImportant,
+      };
+      newNotes[toggledNoteIndex] = newNote;
+      return {
+        ...prevState,
+        notes: newNotes,
+      };
     default:
       return prevState;
   }
