@@ -1,35 +1,19 @@
+import { ADD_NOTE, TOGGLE_NOTE, FETCH_NOTES } from "../types.js";
+
 const initialState = {
-  notes: [
-    {
-      id: 1,
-      date: "23/12/20",
-      isImportant: false,
-      note: "I am note 1",
-    },
-    {
-      id: 2,
-      date: "23/12/20",
-      isImportant: false,
-      note: "I am note 2",
-    },
-    {
-      id: 3,
-      date: "23/12/20",
-      isImportant: false,
-      note: "I am note 2",
-    },
-  ],
+  notes: [],
 };
 
 const reducer = (prevState = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case "ADD_NOTE":
+    case ADD_NOTE:
       return {
         ...prevState,
         notes: [...prevState.notes, payload],
       };
-    case "TOGGLE_NOTE":
+
+    case TOGGLE_NOTE:
       const newNotes = prevState.notes.slice();
       const toggledNoteIndex = newNotes.findIndex(
         (note) => note.id === payload
@@ -44,6 +28,13 @@ const reducer = (prevState = initialState, action) => {
         ...prevState,
         notes: newNotes,
       };
+
+    case FETCH_NOTES:
+      return {
+        ...prevState,
+        notes: payload,
+      };
+
     default:
       return prevState;
   }

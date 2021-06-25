@@ -14,6 +14,7 @@ const CreateNote = ({ addNewNote }) => {
       isImportant: false,
     };
     addNewNote(data);
+    setNote("");
   };
 
   return (
