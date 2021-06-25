@@ -1,6 +1,8 @@
 import Note from "./Note";
+import { store } from "../redux/store";
 
-const AllNotes = ({ notes, toggleImportant }) => {
+const AllNotes = ({ toggleImportant }) => {
+  const notes = store.getState().notes;
   return (
     <div>
       <h3> Notes</h3>

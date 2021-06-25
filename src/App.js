@@ -34,9 +34,9 @@ const App = () => {
     <div className="container mt-3 p-3">
       <CreateNote createNote={handleCreateNote} />
       <hr />
-      <ImportantNotes notes={notes} toggleImportant={handleToggleImportant} />
+      <ImportantNotes toggleImportant={handleToggleImportant} />
       <hr />
-      <AllNotes notes={notes} toggleImportant={handleToggleImportant} />
+      <AllNotes toggleImportant={handleToggleImportant} />
     </div>
   );
 };
