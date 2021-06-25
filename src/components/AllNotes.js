@@ -1,7 +1,9 @@
 import Note from "./Note";
-import { connect } from "react-redux"; //needs to params : mapStateToProps, mapDispatchToProps
+import { useSelector } from "react-redux"; //needs to params : mapStateToProps, mapDispatchToProps
 
-const AllNotes = ({ notes }) => {
+const AllNotes = () => {
+  const notes = useSelector((state) => state.notes);
+
   return (
     <div className="w-100">
       <h3> Notes</h3>
@@ -14,8 +16,10 @@ const AllNotes = ({ notes }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  notes: state.notes,
-});
+// const mapStateToProps = (state) => ({
+//   notes: state.notes,
+// });
 
-export default connect(mapStateToProps)(AllNotes); //if data change, component will re render
+// export default connect(mapStateToProps)(AllNotes); //if data change, component will re render
+
+export default AllNotes;

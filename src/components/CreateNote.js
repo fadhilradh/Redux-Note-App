@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addNewNote } from "../redux/actions/notes.action";
 
-const CreateNote = ({ addNewNote }) => {
+const CreateNote = () => {
   const [note, setNote] = useState("");
+
+  const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,7 +15,7 @@ const CreateNote = ({ addNewNote }) => {
       date: new Date().toJSON().slice(0, 10),
       isImportant: false,
     };
-    addNewNote(data);
+    dispatch(addNewNote(data));
     setNote("");
   };
 
@@ -37,16 +39,4 @@ const CreateNote = ({ addNewNote }) => {
   );
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     addNewNote: (data) =>
-//       dispatch({
-//         type: "ADD_NOTE",
-//         payload: data,
-//       }),
-//   };
-// };
-
-// action Creator should return object. Use middleware to return function
-
-export default connect(null, { addNewNote })(CreateNote);
+export default CreateNote;

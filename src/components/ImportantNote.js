@@ -1,16 +1,17 @@
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toggleNote } from "../redux/actions/notes.action";
 
-const Note = ({ note, toggleNote }) => {
+const Note = ({ note }) => {
+  const dispatch = useDispatch();
   return (
     <div className="card mb-3 ">
       <div className="card-header">{note.date}</div>
       <div className="card-body">{note.note}</div>
-      <button className="btn" onClick={() => toggleNote(note.id)}>
+      <button className="btn" onClick={() => dispatch(toggleNote(note.id))}>
         Remove from Important
       </button>
     </div>
   );
 };
 
-export default connect(null, { toggleNote })(Note);
+export default Note;

@@ -1,7 +1,8 @@
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import ImportantNote from "./ImportantNote";
 
-const ImportantNotes = ({ notes }) => {
+const ImportantNotes = () => {
+  const notes = useSelector((state) => state.notes);
   return (
     <div>
       <h3>Important Notes</h3>
@@ -16,8 +17,4 @@ const ImportantNotes = ({ notes }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  notes: state.notes,
-});
-
-export default connect(mapStateToProps)(ImportantNotes);
+export default ImportantNotes;

@@ -1,7 +1,8 @@
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toggleNote } from "../redux/actions/notes.action";
 
-const Note = ({ note, toggleNote }) => {
+const Note = ({ note }) => {
+  const dispatch = useDispatch();
   return (
     <div className="card mb-3 w-25">
       <div className="card-header">{note.date}</div>
@@ -9,7 +10,7 @@ const Note = ({ note, toggleNote }) => {
       <button
         disabled={note.isImportant}
         className="btn"
-        onClick={() => toggleNote(note.id)}
+        onClick={() => dispatch(toggleNote(note.id))}
       >
         Add to Important
       </button>
@@ -17,4 +18,4 @@ const Note = ({ note, toggleNote }) => {
   );
 };
 
-export default connect(null, { toggleNote })(Note);
+export default Note;

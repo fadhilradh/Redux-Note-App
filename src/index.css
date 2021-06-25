@@ -19,6 +19,7 @@ h3 {
 
 .notes {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .importantNotes .btn:hover {
@@ -30,9 +31,10 @@ h3 {
 
 .card {
   background: transparent;
-  width: 15rem;
+  width: 20%;
+  height: 15rem;
   box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
-  margin-right: 30px;
+  margin-right: 10px;
 }
 
 .btn {
