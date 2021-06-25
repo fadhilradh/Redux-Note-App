@@ -1,8 +1,7 @@
 import Note from "./Note";
-import { store } from "../redux/store";
+import { connect } from "react-redux"; //needs to params : mapStateToProps, mapDispatchToProps
 
-const AllNotes = ({ toggleImportant }) => {
-  const notes = store.getState().notes;
+const AllNotes = ({ toggleImportant, notes }) => {
   return (
     <div>
       <h3> Notes</h3>
@@ -15,4 +14,8 @@ const AllNotes = ({ toggleImportant }) => {
   );
 };
 
-export default AllNotes;
+const mapStateToProps = (state) => ({
+  notes: state.notes,
+});
+
+export default connect(mapStateToProps)(AllNotes); //if data change, component will re render

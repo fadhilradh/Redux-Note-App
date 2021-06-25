@@ -32,7 +32,7 @@ const App = () => {
 
   return (
     <div className="container mt-3 p-3">
-      <CreateNote createNote={handleCreateNote} />
+      <CreateNote />
       <hr />
       <ImportantNotes toggleImportant={handleToggleImportant} />
       <hr />
