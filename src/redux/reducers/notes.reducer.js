@@ -1,37 +1,29 @@
-import { ADD_NOTE, TOGGLE_NOTE, FETCH_NOTES } from "../types.js";
+import { ADD_NOTE, TOGGLE_NOTE, FETCH_NOTES, SET_LOADER } from "../types.js";
 
 const initialState = {
   notes: [],
+  loading: false,
 };
 
 const reducer = (prevState = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
+    case SET_LOADER:
+      return {
+        ...prevState,
+        loading: true,
+      };
     case ADD_NOTE:
       return {
         ...prevState,
+        loading: false,
         notes: [...prevState.notes, payload],
-      };
-
-    case TOGGLE_NOTE:
-      const newNotes = prevState.notes.slice();
-      const toggledNoteIndex = newNotes.findIndex(
-        (note) => note.id === payload
-      );
-      const toggledNote = newNotes[toggledNoteIndex];
-      const newNote = {
-        ...toggledNote,
-        isImportant: !toggledNote.isImportant,
-      };
-      newNotes[toggledNoteIndex] = newNote;
-      return {
-        ...prevState,
-        notes: newNotes,
       };
 
     case FETCH_NOTES:
       return {
         ...prevState,
+        loading: false,
         notes: payload,
       };
 

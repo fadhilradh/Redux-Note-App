@@ -3,7 +3,7 @@ import { connect } from "react-redux"; //needs to params : mapStateToProps, mapD
 
 const AllNotes = ({ notes }) => {
   return (
-    <div>
+    <div className="w-100">
       <h3> Notes</h3>
       <div className="notes">
         {notes.map((note) => (
